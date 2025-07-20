@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.infinite.jsf.model">
+
+    <class name="ProvidersOtp" table="Providers_Otp">
+        
+        <id name="otpId" column="otp_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="providerId" column="provider_id" not-null="true"/>
+        <property name="otpCode" column="otp_code" not-null="true"/>
+        
+        <property name="createdAt" column="created_at" type="java.time.LocalDateTime"/>
+        <property name="expiresAt" column="expires_at" type="java.time.LocalDateTime"/>
+
+        <property name="verified" column="isVerified" type="boolean"/>
+
+    </class>
+</hibernate-mapping>

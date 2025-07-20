@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.infinite.jsf.model.Providers" table="Providers">
+
+        <id name="providerId" column="provider_id" type="string">
+            <generator class="assigned"/>
+        </id>
+
+        <property name="providerName" column="provider_name" type="string" not-null="true"/>
+        <property name="hospitalName" column="hospital_name" type="string" not-null="true"/>
+        <property name="telephone" column="telephone" type="string" not-null="true"/>
+        <property name="email" column="email" type="string" not-null="true" unique="true"/>
+        <property name="password" column="password" type="string"/>
+        <property name="address" column="address" type="string" not-null="true"/>
+        <property name="city" column="city" type="string" not-null="true"/>
+        <property name="state" column="state" type="string" not-null="true"/>
+        <property name="zipcode" column="zipcode" type="string" not-null="true"/>
+
+        <!-- Mapping enum as string -->
+        <property name="status" column="status" not-null="true">
+            <type name="org.hibernate.type.EnumType">
+                <param name="enumClass">com.infinite.jsf.model.ProvidersStatus</param>
+                <param name="useNamed">12</param>
+            </type>
+        </property>
+
+        <property name="createdAt" column="created_at" type="timestamp" insert="false" update="false"/>
+
+    </class>
+</hibernate-mapping>
